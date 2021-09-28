@@ -1,9 +1,10 @@
 def encrypt(text, k):
-    text = text.replace(" ", "")
     new_text = list()
     len_text = len(text)
     for i in range(len_text):
-        if(text.isupper()):
+        if text[i] == ' ':
+            new_text.append(' ')
+        elif text[i].isupper():
             new_text.append(chr(((ord(text[i]) + k - 65) % 26) + 65))
         else:
             new_text.append(chr(((ord(text[i]) + k - 97) % 26) + 97))
@@ -12,11 +13,12 @@ def encrypt(text, k):
 
 
 def decrypt(text, k):
-    text = text.replace(" ", "")
     new_text = list()
     len_text = len(text)
     for i in range(len_text):
-        if(text.isupper()):
+        if text[i] == ' ':
+            new_text.append(' ')
+        elif text[i].isupper():
             new_text.append(chr(((ord(text[i]) - k - 65) % 26) + 65))
         else:
             new_text.append(chr(((ord(text[i]) - k - 97) % 26) + 97))
